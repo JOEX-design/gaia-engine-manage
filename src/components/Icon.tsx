@@ -8,7 +8,7 @@ type IconName =
   // 功能相关
   | 'cpu' | 'server' | 'shield-keyhole' | 'warehouse'
   // 箭头相关
-  | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up'
+  | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up' | 'arrow-rightup'
   | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up'
   | 'd-arrow-r'  // 双箭头右
   // 操作相关
@@ -17,7 +17,7 @@ type IconName =
   | 'star' | 'star-fill' | 'check' | 'dot' | 'clock'
   // 引擎 Logo
   | 'logo-trino' | 'logo-starrocks' | 'logo-flink' | 'logo-hive'
-  | 'logo-spark' | 'logo-kafka'
+  | 'logo-spark' | 'logo-kafka' | 'logo-automq'
   // 其他
   | 'system-build' | 'help' | 'notification' | 'info'
   | 'logo-feishu' | 'logo-dingding' | 'logo-wecom'
@@ -46,6 +46,7 @@ const iconMap: Record<IconName, keyof typeof TaIcons> = {
   'arrow-left': 'TaArrowLeft',
   'arrow-right': 'TaArrowRight',
   'arrow-up': 'TaArrowUp',
+  'arrow-rightup': 'TaArrowRightup',
   'chevron-down': 'TaArrowDown',
   'chevron-left': 'TaArrowLeft',
   'chevron-right': 'TaArrowRight',
@@ -55,7 +56,7 @@ const iconMap: Record<IconName, keyof typeof TaIcons> = {
   'filter': 'TaFilter',
   'setting': 'TaSetting',
   'speed': 'TaSpeed',
-  'close': 'TaArrowClose',
+  'close': 'TaClose',
   'bell': 'TaBell',
   'edit': 'TaEdit',
   'recurring': 'TaRecurring',
@@ -70,6 +71,7 @@ const iconMap: Record<IconName, keyof typeof TaIcons> = {
   'logo-hive': 'TaFolderOpenLine',
   'logo-spark': 'TaPlanetCl',
   'logo-kafka': 'TaMEventCl',
+  'logo-automq': 'TaServer',
   'system-build': 'TaSystemBuild',
   'help': 'TaTimeLock',
   'notification': 'TaAlertCl',

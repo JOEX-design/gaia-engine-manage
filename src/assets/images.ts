@@ -20,3 +20,6 @@ export const LOGO_FLINK = new URL('./images/logo-flink.png', import.meta.url).hr
 
 // Trino Logo
 export const LOGO_TRINO = new URL('./images/logo-trino.svg', import.meta.url).href;
+
+// AutoMQ Logo
+export const LOGO_AUTOMQ = new URL('./images/logo-automq.svg', import.meta.url).href;

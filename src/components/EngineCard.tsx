@@ -91,6 +91,7 @@ export const EngineCard: React.FC<EngineCardProps> = ({ engine, isActive = false
     if (engine.taskCount === undefined) return;
 
     const refreshTask = () => {
+      if (engine.taskCount === undefined) return;
       const taskDelta = Math.floor(Math.random() * 11) - 5;
       const newTask = Math.max(0, engine.taskCount + taskDelta);
       setTaskCount(newTask);

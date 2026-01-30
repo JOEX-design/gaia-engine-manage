@@ -2,18 +2,25 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './EngineDetailPanel.module.css';
 import { Icon } from './Icon';
 import { SlotLogo } from './SlotLogo';
+import { EditEngineModal } from './EditEngineModal';
+import { EditChannelModal } from './EditChannelModal';
 import { EngineConfig, ChannelConfig, MetricConfig } from '../types/engine';
 
 interface EngineDetailPanelProps {
   engine: EngineConfig;
   onClose: () => void;
+  onEngineUpdate?: (updatedEngine: Partial<EngineConfig>) => void;
+  onChannelUpdate?: (channelId: string, updatedChannel: Partial<ChannelConfig>) => void;
 }
 
 // Tab类型
 type TabType = 'channel' | 'config' | 'metrics';
 
 // 通道卡片组件
-const ChannelCard: React.FC<{ channel: ChannelConfig }> = ({ channel }) => {
+const ChannelCard: React.FC<{
+  channel: ChannelConfig;
+  onEditClick: (channel: ChannelConfig) => void;
+}> = ({ channel, onEditClick }) => {
   const progressPercentage = (channel.queueProgress.current / channel.queueProgress.total) * 100;
   const concurrencyPercentage = channel.concurrencyRate;
 
@@ -34,7 +41,7 @@ const ChannelCard: React.FC<{ channel: ChannelConfig }> = ({ channel }) => {
             )}
           </div>
         </div>
-        <button className={styles.editIconButton}>
+        <button className={styles.editIconButton} onClick={() => onEditClick(channel)}>
           <Icon name="edit" size={16} />
         </button>
       </div>
@@ -101,6 +108,9 @@ const ConfigTab: React.FC<{ engine: EngineConfig }> = ({ engine }) => {
     engine.flinkSubType?.startsWith('resource-pool')
   );
 
+  // 判断是否为 AutoMQ 引擎
+  const isAutoMQEngine = engine.engineType === 'automq';
+
   return (
     <div className={styles.configContainer}>
       {/* 分组1：引擎规模、最大并发数 */}
@@ -128,7 +138,7 @@ const ConfigTab: React.FC<{ engine: EngineConfig }> = ({ engine }) => {
         )}
       </div>
 
-      {/* 分组2：Flink Session 特有配置或通用配置 */}
+      {/* 分组2：Flink Session 特有配置或 AutoMQ 配置或通用配置 */}
       {isFlinkSession ? (
         <div className={styles.configGroup}>
           {engine.jmSpec && (
@@ -153,6 +163,21 @@ const ConfigTab: React.FC<{ engine: EngineConfig }> = ({ engine }) => {
             <div className={styles.configItem}>
               <span className={styles.configLabel}>最小预热</span>
               <span className={styles.configValue}>{engine.minWarmup}</span>
+            </div>
+          )}
+        </div>
+      ) : isAutoMQEngine ? (
+        <div className={styles.configGroup}>
+          {engine.controllerSpec && (
+            <div className={styles.configItem}>
+              <span className={styles.configLabel}>Controller规格</span>
+              <span className={styles.configValue}>{engine.controllerSpec}</span>
+            </div>
+          )}
+          {engine.brokerSpec && (
+            <div className={styles.configItem}>
+              <span className={styles.configLabel}>Broker规格</span>
+              <span className={styles.configValue}>{engine.brokerSpec}</span>
             </div>
           )}
         </div>
@@ -387,30 +412,40 @@ const MetricsTab: React.FC<MetricsTabProps> = ({ engine, onCountdownChange, refr
   );
 };
 
-export const EngineDetailPanel: React.FC<EngineDetailPanelProps> = ({ engine, onClose }) => {
+export const EngineDetailPanel: React.FC<EngineDetailPanelProps> = ({ engine, onClose, onEngineUpdate, onChannelUpdate }) => {
   // 转换引擎类型
-  const engineTypeMap: Record<string, 'Trino' | 'StarRocks' | 'Flink' | 'Hive'> = {
+  const engineTypeMap: Record<string, 'Trino' | 'StarRocks' | 'Flink' | 'Hive' | 'AutoMQ'> = {
     trino: 'Trino',
     starrocks: 'StarRocks',
     flink: 'Flink',
     hive: 'Hive',
+    automq: 'AutoMQ',
   };
   const engineType = engineTypeMap[engine.engineType] || 'Trino';
 
   // 获取通道列表，如果没有通道则返回空数组
   const channels = engine.channels || [];
 
-  // 判断是否为 Flink 引擎
+  // 判断是否为 Flink 或 AutoMQ 引擎（它们没有通道Tab）
   const isFlinkEngine = engine.engineType === 'flink';
+  const isAutoMQEngine = engine.engineType === 'automq';
+  const hasNoChannelTab = isFlinkEngine || isAutoMQEngine;
 
-  // Tab状态 - Flink 引擎默认显示配置 Tab
-  const [activeTab, setActiveTab] = useState<TabType>(isFlinkEngine ? 'config' : 'channel');
+  // Tab状态 - Flink/AutoMQ 引擎默认显示配置 Tab
+  const [activeTab, setActiveTab] = useState<TabType>(hasNoChannelTab ? 'config' : 'channel');
 
   // 倒计时状态
   const [countdown, setCountdown] = useState(5);
 
   // 刷新触发器
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  // 引擎编辑弹窗状态
+  const [editModalVisible, setEditModalVisible] = useState(false);
+
+  // 通道编辑弹窗状态
+  const [channelEditModalVisible, setChannelEditModalVisible] = useState(false);
+  const [selectedChannel, setSelectedChannel] = useState<ChannelConfig | null>(null);
 
   // 处理Tab切换
   const handleTabChange = (tab: TabType) => {
@@ -420,6 +455,45 @@ export const EngineDetailPanel: React.FC<EngineDetailPanelProps> = ({ engine, on
   // 处理强制刷新
   const handleManualRefresh = () => {
     setRefreshTrigger(prev => prev + 1);
+  };
+
+  // 处理引擎编辑按钮点击
+  const handleEditClick = () => {
+    setEditModalVisible(true);
+  };
+
+  // 处理引擎保存编辑
+  const handleSaveEdit = (updatedEngine: Partial<EngineConfig>) => {
+    if (onEngineUpdate) {
+      onEngineUpdate(updatedEngine);
+    }
+    setEditModalVisible(false);
+  };
+
+  // 处理引擎取消编辑
+  const handleCancelEdit = () => {
+    setEditModalVisible(false);
+  };
+
+  // 处理通道编辑按钮点击
+  const handleChannelEditClick = (channel: ChannelConfig) => {
+    setSelectedChannel(channel);
+    setChannelEditModalVisible(true);
+  };
+
+  // 处理通道保存编辑
+  const handleChannelSaveEdit = (updatedChannel: Partial<ChannelConfig>) => {
+    if (selectedChannel && onChannelUpdate) {
+      onChannelUpdate(selectedChannel.id, updatedChannel);
+    }
+    setChannelEditModalVisible(false);
+    setSelectedChannel(null);
+  };
+
+  // 处理通道取消编辑
+  const handleChannelCancelEdit = () => {
+    setChannelEditModalVisible(false);
+    setSelectedChannel(null);
   };
 
   return (
@@ -441,7 +515,7 @@ export const EngineDetailPanel: React.FC<EngineDetailPanelProps> = ({ engine, on
               )}
             </div>
             <div className={styles.actionButtons}>
-              <button className={styles.editButton}>
+              <button className={styles.editButton} onClick={handleEditClick}>
                 <Icon name="edit" size={16} />
                 <span>编辑</span>
               </button>
@@ -459,7 +533,7 @@ export const EngineDetailPanel: React.FC<EngineDetailPanelProps> = ({ engine, on
       {/* Tab 和搜索区域 */}
       <div className={styles.panelTabs}>
         <div className={styles.tabs}>
-          {!isFlinkEngine && (
+          {!hasNoChannelTab && (
             <button
               className={`${styles.tab} ${activeTab === 'channel' ? styles.tabActive : ''}`}
               onClick={() => handleTabChange('channel')}
@@ -505,13 +579,31 @@ export const EngineDetailPanel: React.FC<EngineDetailPanelProps> = ({ engine, on
             </div>
           ) : (
             channels.map((channel) => (
-              <ChannelCard key={channel.id} channel={channel} />
+              <ChannelCard key={channel.id} channel={channel} onEditClick={handleChannelEditClick} />
             ))
           )
         )}
         {activeTab === 'config' && <ConfigTab engine={engine} />}
         {activeTab === 'metrics' && <MetricsTab engine={engine} onCountdownChange={setCountdown} refreshTrigger={refreshTrigger} />}
       </div>
+
+      {/* 编辑引擎弹窗 */}
+      <EditEngineModal
+        engine={engine}
+        visible={editModalVisible}
+        onSave={handleSaveEdit}
+        onCancel={handleCancelEdit}
+      />
+
+      {/* 编辑通道弹窗 */}
+      {selectedChannel && (
+        <EditChannelModal
+          channel={selectedChannel}
+          visible={channelEditModalVisible}
+          onSave={handleChannelSaveEdit}
+          onCancel={handleChannelCancelEdit}
+        />
+      )}
     </div>
   );
 };

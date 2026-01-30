@@ -18,7 +18,7 @@
       },
       "engineScale": {
         "spec": "4CU",
-        "count": "4",
+        "count": "4～8",
         "type": "计算型"
       },
       "workerCount": 5,

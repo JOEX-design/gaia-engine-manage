@@ -1,0 +1,171 @@
+.warehouseFeaturesPage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+}
+
+/* 页面标题 */
+.pageHeader {
+  flex-shrink: 0;
+}
+
+.pageTitle {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #212121;
+  margin: 0;
+}
+
+/* 表格容器 */
+.tableContainer {
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 表格列 */
+.tableColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 表头 */
+.tableHeader {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E3E4E5;
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #212121;
+}
+
+.tableHeader span {
+  padding: 1px 0;
+}
+
+/* 表格单元格 - 默认样式 */
+.tableCell {
+  flex-shrink: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #E3E4E5;
+  background-color: #FFFFFF;
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #333333;
+}
+
+/* Switch单元格有特殊的padding */
+.tableCell:has(.switchCell) {
+  padding: 20px 16px;
+}
+
+/* 操作列单元格有特殊的padding */
+.tableColumn:last-child .tableCell {
+  padding: 16px;
+  gap: 8px;
+}
+
+/* 特性名 */
+.featureName {
+  color: #333333;
+}
+
+/* Switch开关 */
+.switchCell {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  border-radius: 999px;
+  width: 32px;
+  height: 16px;
+  background-color: rgba(185, 190, 207, 0.5);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.switchOn {
+  background-color: #1E76F0;
+}
+
+.switchOff {
+  background-color: rgba(185, 190, 207, 0.5);
+}
+
+.switchToggle {
+  position: absolute;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  left: 3px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+}
+
+/* 已开启空间 */
+.enabledSpaces {
+  color: #1E76F0;
+}
+
+/* 可用应用 */
+.availableApp {
+  color: #333333;
+}
+
+/* 空值 */
+.emptyValue {
+  color: #333333;
+}
+
+/* 操作按钮 */
+.actionButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #333333;
+  flex-shrink: 0;
+}
+
+.actionButton:hover {
+  background-color: rgba(185, 190, 207, 0.1);
+}
+
+.actionButton svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}

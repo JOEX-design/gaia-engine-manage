@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "engines": [
+    {
+      "id": "engine-automq-streaming-storage",
+      "engineType": "automq",
+      "displayName": "数开流式存储引擎",
+      "engineName": "xxxxxx",
+      "creationType": "preset",
+      "version": "AutoMQ 1.0",
+      "businessMode": "流式存储",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "engineScale": {
+        "spec": "16CU",
+        "count": "3~10",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "Controller数",
+      "creator": "System",
+      "controllerSpec": "8CU",
+      "brokerSpec": "8CU",
+      "metrics": [
+        {
+          "id": "automq-cpu",
+          "name": "CPU使用率",
+          "value": 60,
+          "unit": "%",
+          "highlight": false,
+          "chartData": [55, 62, 58, 65, 60, 63, 60]
+        },
+        {
+          "id": "automq-memory",
+          "name": "内存使用率",
+          "value": 60,
+          "unit": "%",
+          "highlight": false,
+          "chartData": [58, 60, 55, 62, 59, 61, 60]
+        },
+        {
+          "id": "automq-controller",
+          "name": "Controller数",
+          "value": 5,
+          "unit": "个",
+          "highlight": false,
+          "chartData": [4, 5, 5, 4, 5, 5, 5]
+        },
+        {
+          "id": "automq-broker",
+          "name": "Broker数",
+          "value": 3,
+          "unit": "个",
+          "highlight": false,
+          "chartData": [3, 3, 4, 3, 3, 3, 3]
+        },
+        {
+          "id": "automq-throughput",
+          "name": "生产TPS",
+          "value": 15000,
+          "unit": "条/秒",
+          "highlight": true,
+          "chartData": [12000, 14000, 13000, 15000, 14500, 15500, 15000]
+        },
+        {
+          "id": "automq-consumption",
+          "name": "消费TPS",
+          "value": 12000,
+          "unit": "条/秒",
+          "highlight": true,
+          "chartData": [10000, 12000, 11000, 12500, 11800, 12200, 12000]
+        }
+      ]
+    }
+  ]
+}

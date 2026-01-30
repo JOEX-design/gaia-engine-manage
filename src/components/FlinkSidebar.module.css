@@ -123,3 +123,16 @@
 .item:hover:not(.itemActive) {
   background-color: var(--color-bg-light);
 }
+
+.itemDisabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.itemDisabled .itemLabel {
+  color: var(--color-text-3);
+}
+
+.itemDisabled:hover {
+  background-color: transparent;
+}

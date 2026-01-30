@@ -11,6 +11,7 @@ import dwBatchEngineConfig from './engines/dw-batch-engine.json';
 import starrocksEngineConfig from './engines/starrocks-engine.json';
 import flinkSessionEnginesConfig from './engines/flink-session-engines.json';
 import flinkResourcePoolEnginesConfig from './engines/flink-resource-pool-engines.json';
+import automqEnginesConfig from './engines/automq-engines.json';
 
 // 导入资源池配置文件
 import flinkRealtimePoolsConfig from './pools/flink-realtime-pools.json';
@@ -30,6 +31,13 @@ export function loadEngineConfigs(): EngineConfig[] {
 
   // 合并所有引擎配置，添加类型断言
   return configs.flatMap((config) => config.engines as EngineConfig[]);
+}
+
+/**
+ * 加载AutoMQ存储引擎配置
+ */
+export function loadAutoMQConfigs(): EngineConfig[] {
+  return automqEnginesConfig.engines as EngineConfig[];
 }
 
 /**

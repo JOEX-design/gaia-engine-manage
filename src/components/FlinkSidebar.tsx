@@ -6,6 +6,7 @@ import { FlinkEngineSubType } from '../types/engine';
 export interface FlinkSidebarProps {
   selectedSubType: FlinkEngineSubType;
   onSubTypeChange: (subType: FlinkEngineSubType) => void;
+  disabledSubTypes?: FlinkEngineSubType[];
 }
 
 interface SidebarSection {
@@ -46,6 +47,7 @@ const SIDEBAR_ITEMS: SidebarSection[] = [
 export const FlinkSidebar: React.FC<FlinkSidebarProps> = ({
   selectedSubType,
   onSubTypeChange,
+  disabledSubTypes = [],
 }) => {
   return (
     <div className={styles.sidebar}>
@@ -84,12 +86,13 @@ export const FlinkSidebar: React.FC<FlinkSidebarProps> = ({
           }
 
           const isActive = item.id === selectedSubType;
+          const isDisabled = item.id && disabledSubTypes.includes(item.id);
 
           return (
             <div
               key={index}
-              className={`${styles.item} ${isActive ? styles.itemActive : ''}`}
-              onClick={() => item.id && onSubTypeChange(item.id)}
+              className={`${styles.item} ${isActive ? styles.itemActive : ''} ${isDisabled ? styles.itemDisabled : ''}`}
+              onClick={() => item.id && !isDisabled && onSubTypeChange(item.id)}
             >
               <span className={styles.itemLabel}>{item.label}</span>
             </div>

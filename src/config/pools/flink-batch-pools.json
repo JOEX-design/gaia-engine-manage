@@ -12,15 +12,11 @@
       },
       "tags": [
         {
-          "text": "批量计算",
+          "text": "批量集成",
           "type": "invalid"
         },
         {
           "text": "计算型",
-          "type": "invalid"
-        },
-        {
-          "text": "通用型",
           "type": "invalid"
         }
       ],

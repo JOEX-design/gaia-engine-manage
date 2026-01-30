@@ -278,6 +278,32 @@
   flex-shrink: 0;
 }
 
+/* 编辑按钮 - hover时显示 */
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4px;
+  right: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.editButton span {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #1e76f0;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.editButton:hover span {
+  color: #1875d6;
+}
+
 /* 指标容器 - 对应 (77:3734) content-stretch flex gap-[12px] items-center */
 .metricsContainer {
   display: flex;
@@ -437,3 +463,20 @@
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
+/* ========== Disabled 状态 ========== */
+.headerContainer.disabled {
+  background: linear-gradient(to right, rgba(234, 238, 253, 0.3), rgba(234, 238, 253, 0.05));
+  opacity: 0.6;
+}
+
+.headerContainer.disabled .poolName,
+.headerContainer.disabled .poolCode,
+.headerContainer.disabled .status,
+.headerContainer.disabled .tag,
+.headerContainer.disabled .creator span,
+.headerContainer.disabled .metricValue,
+.headerContainer.disabled .metricLabel span {
+  color: #999;
+}
+

@@ -4,7 +4,7 @@
  */
 
 // 引擎类型
-export type EngineType = 'trino' | 'starrocks' | 'flink' | 'hive';
+export type EngineType = 'trino' | 'starrocks' | 'flink' | 'hive' | 'automq';
 
 // Flink 引擎子类型
 export type FlinkEngineSubType = 'session' | 'resource-pool-realtime' | 'resource-pool-batch';
@@ -160,6 +160,12 @@ export interface EngineConfig {
 
   /** Worker规格 */
   workerSpec: string;
+
+  /** AutoMQ Controller规格 */
+  controllerSpec?: string;
+
+  /** AutoMQ Broker规格 */
+  brokerSpec?: string;
 
   /** 创建者 */
   creator: string;

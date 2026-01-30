@@ -7,11 +7,14 @@ import { ResourcePoolConfig } from '../types/engine';
 interface ResourcePoolHeaderProps {
   pool: ResourcePoolConfig;
   engineCount?: number;
+  disabled?: boolean;
+  onEditClick?: () => void;
 }
 
-export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool, engineCount }) => {
+export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool, engineCount, disabled = false, onEditClick }) => {
   const [showRunningCuInfo, setShowRunningCuInfo] = useState(false);
   const [showQueueInfo, setShowQueueInfo] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // 动态刷新的状态
   const [runningCU, setRunningCU] = useState(pool.runningCUMetric.current);
@@ -81,7 +84,11 @@ export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool, en
   return (
     <div className={styles.headerWrapper}>
       {/* Header 容器 - 带渐变背景 */}
-      <div className={styles.headerContainer}>
+      <div
+        className={`${styles.headerContainer} ${disabled ? styles.disabled : ''}`}
+        onMouseEnter={() => !disabled && setIsHovered(true)}
+        onMouseLeave={() => !disabled && setIsHovered(false)}
+      >
         <div className={styles.headerContent}>
           {/* 左侧区域 */}
           <div className={styles.headerLeft}>
@@ -138,6 +145,13 @@ export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool, en
           {/* 右侧区域 */}
           <div className={styles.headerRight}>
             <div className={styles.rightInner}>
+              {/* 编辑按钮 - hover时显示，disabled时不显示 */}
+              {isHovered && onEditClick && !disabled && (
+                <div className={styles.editButton} onClick={onEditClick}>
+                  <span>编辑</span>
+                </div>
+              )}
+
               {/* 上方占位区域 - 把指标推到底部 */}
               <div className={styles.rightSpacer} />
 
