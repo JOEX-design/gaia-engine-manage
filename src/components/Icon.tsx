@@ -22,7 +22,8 @@ type IconName =
   | 'system-build' | 'help' | 'notification' | 'info'
   | 'logo-feishu' | 'logo-dingding' | 'logo-wecom'
   | 'space-line'  // 资源池分隔线图标
-  | 'dashboard-plan';  // 引擎图标
+  | 'dashboard-plan'  // 引擎图标
+  | 'user-1';  // 用户图标
 
 interface IconProps {
   name: IconName;
@@ -78,6 +79,7 @@ const iconMap: Record<IconName, keyof typeof TaIcons> = {
   'logo-wecom': 'TaLogoWecomCl',
   'space-line': 'TaSpaceLine',
   'dashboard-plan': 'TaDashboardPlan',
+  'user-1': 'TaUser1',
 };
 
 export const Icon: React.FC<IconProps> = ({

@@ -1,0 +1,439 @@
+/* 外层包装 - 对应 (77:3679) content-stretch flex items-start relative size-full */
+.headerWrapper {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+/* Header 容器 - 对应 (77:3706) bg-gradient-to-r border-[#e3e4e5] border-b border-solid */
+.headerContainer {
+  background: linear-gradient(to right, rgba(234, 238, 253, 0.5), rgba(234, 238, 253, 0.1));
+  border-bottom: 1px solid #e3e4e5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* Header 内容 - 对应 (77:3707) content-stretch flex gap-[12px] items-end px-[24px] py-[16px] */
+.headerContent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  padding: 16px 24px;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* ========== 左侧区域 ========== */
+
+/* 左侧主容器 - 对应 (77:3708) content-stretch flex flex-[1_0_0] flex-col gap-[8px] */
+.headerLeft {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+}
+
+/* 第一行 - 对应 (77:3709) content-stretch flex gap-[12px] items-center */
+.firstRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* 图标外层容器 - 对应 (77:3710) content-stretch flex flex-col h-[42px] */
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 图标圆形背景 - 对应 (77:3711) bg-[#f3f3f5] rounded-[100px] size-[32px] p-[4px] */
+.iconWrapper {
+  background-color: #f3f3f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.iconWrapper svg {
+  color: #333;
+}
+
+/* 名称内容容器 - 对应 (77:3713) content-stretch flex flex-[1_0_0] items-start justify-between */
+.nameContent {
+  display: flex;
+  flex: 1 0 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+}
+
+/* 名称内部容器 - 对应 (77:3714) content-stretch flex flex-[1_0_0] flex-col items-start */
+.nameInner {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+}
+
+/* 名称和标签的容器 - 对应 (77:3716) content-stretch flex gap-[8px] items-center */
+.nameLabelRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 资源池名称 - 对应 (77:3717) font-['PingFang_SC:Medium'] text-[14px] text-[#333] */
+.poolName {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #333;
+  font-style: normal;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 预置标签 - 对应 (77:3718) bg-[rgba(185,190,207,0.3)] rounded-[2px] h-[18px] */
+.presetTag {
+  background-color: rgba(185, 190, 207, 0.3);
+  display: flex;
+  gap: 4px;
+  height: 18px;
+  align-items: center;
+  padding: 0 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.presetTag svg {
+  display: block;
+}
+
+.presetTag span {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #202241;
+  font-style: normal;
+}
+
+/* 资源池代码 - 对应 (77:3719) font-['PingFang_SC:Regular'] text-[12px] text-[#7e7f80] w-[144px] */
+.poolCode {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #7e7f80;
+  font-style: normal;
+  position: relative;
+  flex-shrink: 0;
+  width: 144px;
+  white-space: pre-wrap;
+}
+
+/* 状态行 - 对应 (77:3720) content-stretch flex gap-[8px] items-center */
+.statusRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 状态 - 对应 (77:3721) content-stretch flex gap-[4px] items-center opacity-90 */
+.status {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  opacity: 0.9;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.statusEnabled span:last-child {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #129b76;
+  font-style: normal;
+}
+
+.statusEnabled svg {
+  color: #129b76;
+}
+
+/* 标签组 - 对应 (77:3724) content-stretch flex gap-[8px] items-center */
+.tagsGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 单个标签 - 对应 Tag 组件 bg-[#ebedf3] rounded-[2px] h-[18px] px-[4px] */
+.tag {
+  background-color: #ebedf3;
+  display: flex;
+  height: 18px;
+  align-items: center;
+  padding: 0 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #747c94;
+  font-style: normal;
+}
+
+/* 创建者 - 对应 (77:3728) border-[#e3e4e5] border-l border-solid pl-[8px] */
+.creator {
+  border-left: 1px solid #e3e4e5;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding-left: 8px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.creator svg {
+  display: block;
+}
+
+.creator span {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: #7e7f80;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+/* ========== 右侧区域 ========== */
+
+/* 右侧容器 - 对应 flex flex-row items-end self-stretch */
+.headerRight {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+/* 右侧内部容器 - 对应 (77:3731) content-stretch flex flex-col h-full items-end justify-between */
+.rightInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 上方占位区域 - 对应 (77:3732) content-stretch flex items-center justify-center shrink-0 */
+.rightSpacer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* 指标容器 - 对应 (77:3734) content-stretch flex gap-[12px] items-center */
+.metricsContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 指标项 - 对应 (77:3735, 77:3744, 77:3753) border-[#ebedf3] border-l border-solid pl-[16px] */
+.metricItem {
+  border-left: 1px solid #ebedf3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 16px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 指标内容容器 - 对应 _ProgressLineValue content-stretch flex flex-col gap-[4px] */
+.metricContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 指标头部 - 对应 content-stretch flex items-center justify-between */
+.metricHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex-shrink: 0;
+  width: 140px;
+}
+
+/* 指标标签容器 - 对应 (77:3738, 77:3747) content-stretch flex gap-[4px] items-center */
+.metricLabel {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 指标标签文字 - 对应 font-['PingFang_SC:Regular'] text-[12px] text-[#7e7f80] */
+.metricLabel > span {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #7e7f80;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+/* info 图标 - 对应 (77:3740, 77:3749) size-[14px] */
+.infoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  cursor: help;
+}
+
+.infoIcon svg {
+  color: #7e7f80;
+}
+
+/* 指标值 - 对应 (77:3741, 77:3750, 77:3757) font-['PingFang_SC:Regular'] text-[12px] text-[#333] */
+.metricValue {
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #333;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+/* 进度条 - 对应 (77:3742, 77:3751) bg-[#f2f3f8] h-[6px] rounded-[8px] w-[140px] */
+.progressBar {
+  background-color: #f2f3f8;
+  display: flex;
+  height: 6px;
+  align-items: flex-start;
+  border-radius: 8px;
+  flex-shrink: 0;
+  width: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 进度条填充 - 对应 (77:3743, 77:3752) bg-[#1e76f0] h-[6px] rounded-[8px] */
+.progressFill {
+  background-color: #1e76f0;
+  height: 6px;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+/* 任务数进度条 - 对应 (77:3758) bg-[#1e76f0] h-[6px] rounded-[8px] w-[140px] */
+.taskProgressBar {
+  background-color: #1e76f0;
+  display: flex;
+  height: 6px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  flex-shrink: 0;
+  width: 140px;
+}
+
+/* 任务进度分段 - 对应 (77:3759-77:364) h-[6px] w-[2px] margin */
+.taskSegment,
+.taskSegmentInactive {
+  height: 6px;
+  flex-shrink: 0;
+  width: 2px;
+}
+
+.taskSegment {
+  background-color: #1e76f0;
+}
+
+.taskSegmentInactive {
+  background-color: #f2f3f8;
+}
+
+/* ========== Tooltip ========== */
+.tooltip {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.tooltipContent {
+  background-color: #7e7f80;
+  color: #ffffff;
+  font-family: 'PingFang SC', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}

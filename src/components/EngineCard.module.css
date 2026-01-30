@@ -8,12 +8,11 @@
 
 .card {
   width: 100%;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border-light);
+  background-color: #f9f9fb;
+  border: 1px solid #ebedf3;
   border-radius: 8px;
   overflow: hidden;
   padding: 4px;
-  background-color: var(--color-bg-light);
   transition: border-color 0.2s ease;
   cursor: pointer;
 }
@@ -31,7 +30,7 @@
   width: 100%;
   padding: 16px;
   background-color: var(--color-white);
-  border: 1px solid var(--color-border-light);
+  border: 1px solid #ebedf3;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -88,7 +87,7 @@
 .divider {
   width: 1px;
   height: 20px;
-  background-color: var(--color-border-light);
+  background-color: #ebedf3;
   flex-shrink: 0;
 }
 
@@ -150,7 +149,7 @@
   align-items: flex-start;
   justify-content: center;
   padding-left: 16px;
-  border-left: 1px solid var(--color-border-light);
+  border-left: 1px solid #ebedf3;
 }
 
 .metric:first-child {
@@ -229,7 +228,7 @@
 }
 
 .progressBg {
-  color: var(--color-border-light);
+  color: #ebedf3;
 }
 
 /* 数字滚动动画 */
@@ -304,7 +303,13 @@
 
 .taskMetric {
   padding-left: 8px;
-  border-left: 1px solid var(--color-border-light);
+  border-left: 1px solid #ebedf3;
+}
+
+/* CPU和内存之间的分割线 */
+.usageMetric + .usageMetric {
+  padding-left: 8px;
+  border-left: 1px solid #ebedf3;
 }
 
 /* 并发值容器 */

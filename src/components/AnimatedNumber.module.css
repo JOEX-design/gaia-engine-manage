@@ -1,0 +1,36 @@
+/* 数字滚动动画 */
+.animatedNumber {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  color: var(--color-text-1);
+}
+
+.digitColumn {
+  display: inline-block;
+  width: 7px;
+  height: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.digitStrip {
+  display: block;
+  height: 160px;
+  transform: translateY(calc(var(--digit-pos, 0) * -16px));
+  transition: transform 1s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.digit {
+  display: block;
+  height: 16px;
+  line-height: 16px;
+  text-align: left;
+}
+
+.percentSymbol {
+  margin-left: 1px;
+}

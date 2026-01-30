@@ -105,15 +105,17 @@ const ConfigTab: React.FC<{ engine: EngineConfig }> = ({ engine }) => {
           <span className={styles.configLabel}>引擎规模</span>
           <span className={styles.configValue}>{`${engine.engineScale.spec} x ${engine.engineScale.count}，${engine.engineScale.type}`}</span>
         </div>
-        <div className={styles.configItem}>
-          <span className={styles.configLabel}>最大并发数</span>
-          <div className={styles.configValueGroup}>
-            <span className={styles.configValue}>{engine.maxConcurrency.value}</span>
-            {engine.maxConcurrency.tooltip && (
-              <span className={styles.configTip}>({engine.maxConcurrency.tooltip})</span>
-            )}
+        {engine.maxConcurrency && (
+          <div className={styles.configItem}>
+            <span className={styles.configLabel}>最大并发数</span>
+            <div className={styles.configValueGroup}>
+              <span className={styles.configValue}>{engine.maxConcurrency.value}</span>
+              {engine.maxConcurrency.tooltip && (
+                <span className={styles.configTip}>({engine.maxConcurrency.tooltip})</span>
+              )}
+            </div>
           </div>
-        </div>
+        )}
         {isFlinkSession && engine.maxRunningCU !== undefined && (
           <div className={styles.configItem}>
             <span className={styles.configLabel}>最大运行CU数</span>

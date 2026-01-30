@@ -6,7 +6,9 @@ import { CardTabs, EngineTab } from './components/CardTabs';
 import { EngineCard } from './components/EngineCard';
 import { EngineDetailPanel } from './components/EngineDetailPanel';
 import { FlinkSidebar } from './components/FlinkSidebar';
-import { loadEngineConfigs, getEngineTypes } from './config/engineConfigLoader';
+import { ResourcePoolHeader } from './components/ResourcePoolHeader';
+import { Search } from './components/Search';
+import { loadEngineConfigs, getEngineTypes, getResourcePoolsByType } from './config/engineConfigLoader';
 import { EngineConfig, FlinkEngineSubType } from './types/engine';
 
 // 引擎类型映射（用于 Tab 显示）
@@ -23,6 +25,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [selectedEngineId, setSelectedEngineId] = useState<string | null>(null);
   const [flinkSubType, setFlinkSubType] = useState<FlinkEngineSubType>('session');
+  const [selectedPoolId, setSelectedPoolId] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // 加载引擎配置数据
   useEffect(() => {
@@ -39,6 +43,7 @@ function App() {
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
     setSelectedEngineId(null);
+    setSearchQuery('');
     // 切换到Flink时，默认选中session类型
     if (tabId === 'flink') {
       setFlinkSubType('session');
@@ -56,6 +61,7 @@ function App() {
   const handleFlinkSubTypeChange = (subType: FlinkEngineSubType) => {
     setFlinkSubType(subType);
     setSelectedEngineId(null);
+    setSelectedPoolId(null);
   };
 
   // 动态生成 tabs，基于配置文件中的引擎类型
@@ -74,17 +80,43 @@ function App() {
     });
   }, [enginesData, activeTab]);
 
-  // 获取当前选中的引擎列表
+  // 获取当前选中的引擎列表（带搜索过滤）
   const currentEngines = useMemo(() => {
-    const baseFilter = enginesData.filter(engine => engine.engineType === activeTab);
+    let baseFilter = enginesData.filter(engine => engine.engineType === activeTab);
 
     // 如果是Flink，需要根据子类型进一步过滤
     if (activeTab === 'flink') {
-      return baseFilter.filter(engine => engine.flinkSubType === flinkSubType);
+      baseFilter = baseFilter.filter(engine => engine.flinkSubType === flinkSubType);
+    }
+
+    // 搜索过滤：按 displayName 或 engineName 匹配
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      baseFilter = baseFilter.filter(engine =>
+        engine.displayName.toLowerCase().includes(query) ||
+        engine.engineName.toLowerCase().includes(query)
+      );
     }
 
     return baseFilter;
-  }, [enginesData, activeTab, flinkSubType]);
+  }, [enginesData, activeTab, flinkSubType, searchQuery]);
+
+  // 获取当前资源池列表（仅当flinkSubType为资源池类型时）
+  const currentPools = useMemo(() => {
+    if (activeTab !== 'flink') {
+      return [];
+    }
+
+    if (flinkSubType === 'resource-pool-realtime') {
+      return getResourcePoolsByType('realtime');
+    }
+
+    if (flinkSubType === 'resource-pool-batch') {
+      return getResourcePoolsByType('batch');
+    }
+
+    return [];
+  }, [activeTab, flinkSubType]);
 
   // 获取当前选中的引擎
   const selectedEngine = useMemo(() => {
@@ -93,6 +125,11 @@ function App() {
 
   // 判断当前是否是Flink tab
   const isFlinkTab = activeTab === 'flink';
+
+  // 判断当前是否是资源池类型
+  const isResourcePoolType = isFlinkTab && (
+    flinkSubType === 'resource-pool-realtime' || flinkSubType === 'resource-pool-batch'
+  );
 
   if (loading) {
     return <div className={styles.app}>Loading...</div>;
@@ -113,18 +150,56 @@ function App() {
                   onSubTypeChange={handleFlinkSubTypeChange}
                 />
               )}
-              <div className={styles.engineCards}>
-                {currentEngines.map((engine) => (
-                  <EngineCard
-                    key={engine.id}
-                    engine={engine}
-                    isActive={selectedEngineId === engine.id}
-                    hasPanel={selectedEngineId !== null}
-                    onClick={() => handleEngineClick(engine.id)}
-                  />
+              <div className={`${styles.engineCards} ${isResourcePoolType ? styles.resourcePool : ''}`}>
+                {/* 资源池类型：显示资源池标题（独立于引擎列表容器） */}
+                {isResourcePoolType && currentPools.map((pool) => (
+                  <ResourcePoolHeader key={pool.id} pool={pool} />
                 ))}
+                {/* 资源池类型：引擎列表和抽屉的容器 */}
+                {isResourcePoolType ? (
+                  <div className={styles.resourcePoolContentWrapper}>
+                    <div className={styles.resourcePoolEnginesContainer}>
+                      <div className={styles.searchBarWrapper}>
+                        <Search
+                          placeholder="搜索"
+                          value={searchQuery}
+                          onChange={setSearchQuery}
+                        />
+                      </div>
+                      {currentEngines.map((engine) => (
+                        <EngineCard
+                          key={engine.id}
+                          engine={engine}
+                          isActive={selectedEngineId === engine.id}
+                          hasPanel={selectedEngineId !== null}
+                          onClick={() => handleEngineClick(engine.id)}
+                        />
+                      ))}
+                    </div>
+                    {selectedEngine && (
+                      <div className={styles.detailPanelWrapper}>
+                        <EngineDetailPanel
+                          engine={selectedEngine}
+                          onClose={handleCloseDetailPanel}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  // 非资源池类型：直接显示引擎卡片
+                  currentEngines.map((engine) => (
+                    <EngineCard
+                      key={engine.id}
+                      engine={engine}
+                      isActive={selectedEngineId === engine.id}
+                      hasPanel={selectedEngineId !== null}
+                      onClick={() => handleEngineClick(engine.id)}
+                    />
+                  ))
+                )}
               </div>
-              {selectedEngine && (
+              {/* 非资源池类型的抽屉（在 engineCards 外部，与 engineCards 并排） */}
+              {!isResourcePoolType && selectedEngine && (
                 <div className={styles.detailPanelWrapper}>
                   <EngineDetailPanel
                     engine={selectedEngine}

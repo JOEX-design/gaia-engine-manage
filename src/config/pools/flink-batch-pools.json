@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "pools": [
+    {
+      "id": "pool-flink-batch-dw-sync-product",
+      "displayName": "数开离线集成执行资源池",
+      "poolCode": "flink_ch_dw_sync_product",
+      "creationType": "preset",
+      "status": {
+        "text": "已启用",
+        "type": "enabled"
+      },
+      "tags": [
+        {
+          "text": "批量计算",
+          "type": "invalid"
+        },
+        {
+          "text": "计算型",
+          "type": "invalid"
+        },
+        {
+          "text": "通用型",
+          "type": "invalid"
+        }
+      ],
+      "creator": "System",
+      "poolType": "batch",
+      "runningCUMetric": {
+        "id": "metric-running-cu",
+        "name": "运行CU数",
+        "current": 20,
+        "total": 100,
+        "hasInfo": true,
+        "infoTooltip": "当前运行中的CU数量"
+      },
+      "queueMetric": {
+        "id": "metric-queue",
+        "name": "队列",
+        "current": 20,
+        "total": 300,
+        "hasInfo": true,
+        "infoTooltip": "当前队列中的任务数量"
+      },
+      "taskMetric": {
+        "id": "metric-task-count",
+        "name": "任务数",
+        "current": 5,
+        "total": 10,
+        "isTaskType": true
+      }
+    }
+  ]
+}

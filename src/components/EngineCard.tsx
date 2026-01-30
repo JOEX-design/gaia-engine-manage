@@ -1,52 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './EngineCard.module.css';
 import { SlotLogo } from './SlotLogo';
 import { Tag } from './Tag';
 import { Icon } from './Icon';
+import { AnimatedNumber } from './AnimatedNumber';
 import { EngineConfig } from '../types/engine';
-
-// 数字滚动组件
-const AnimatedNumber = ({ value, showPercent = true }: { value: number; showPercent?: boolean }) => {
-  const [displayValue, setDisplayValue] = useState(0);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    if (!hasAnimated.current) {
-      // 首次渲染时，延迟一小段时间后滚动到目标值
-      const timer = setTimeout(() => {
-        setDisplayValue(value);
-        hasAnimated.current = true;
-      }, 100);
-      return () => clearTimeout(timer);
-    } else {
-      // 后续更新直接设置值
-      setDisplayValue(value);
-    }
-  }, [value]);
-
-  // 将数字转换为字符串，每个数字位独立滚动
-  const valueStr = displayValue.toString().padStart(value.toString().length, '0');
-
-  return (
-    <span className={styles.animatedNumber}>
-      {valueStr.split('').map((digit, index) => {
-        const digitValue = parseInt(digit);
-        const digitStyle = { '--digit-pos': digitValue } as React.CSSProperties;
-
-        return (
-          <span key={index} className={styles.digitColumn}>
-            <span className={styles.digitStrip} style={digitStyle} data-digit={digitValue}>
-              {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
-                <span key={num} className={styles.digit}>{num}</span>
-              ))}
-            </span>
-          </span>
-        );
-      })}
-      {showPercent && <span className={styles.percentSymbol}>%</span>}
-    </span>
-  );
-};
 
 // 引擎类型映射
 const ENGINE_TYPE_MAP: Record<string, 'Trino' | 'StarRocks' | 'Flink' | 'Hive'> = {
@@ -199,28 +157,30 @@ export const EngineCard: React.FC<EngineCardProps> = ({ engine, isActive = false
                 </div>
               </div>
             )}
-            <div className={styles.metric}>
-              <span className={styles.metricLabel}>最大并发</span>
-              <div className={styles.concurrencyValue}>
-                <span className={styles.metricValue}>{engine.maxConcurrency.value}</span>
-                {showInfoIcon && (
-                  <div
-                    className={styles.infoIcon}
-                    onMouseEnter={() => setShowTooltip(true)}
-                    onMouseLeave={() => setShowTooltip(false)}
-                  >
-                    <Icon name="info" size={14} />
-                    {showTooltip && engine.maxConcurrency.tooltip && (
-                      <div className={styles.tooltip}>
-                        <div className={styles.tooltipContent}>
-                          {engine.maxConcurrency.tooltip}
+            {engine.maxConcurrency && (
+              <div className={styles.metric}>
+                <span className={styles.metricLabel}>最大并发</span>
+                <div className={styles.concurrencyValue}>
+                  <span className={styles.metricValue}>{engine.maxConcurrency.value}</span>
+                  {showInfoIcon && (
+                    <div
+                      className={styles.infoIcon}
+                      onMouseEnter={() => setShowTooltip(true)}
+                      onMouseLeave={() => setShowTooltip(false)}
+                    >
+                      <Icon name="info" size={14} />
+                      {showTooltip && engine.maxConcurrency.tooltip && (
+                        <div className={styles.tooltip}>
+                          <div className={styles.tooltipContent}>
+                            {engine.maxConcurrency.tooltip}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                )}
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
             <div className={styles.metric}>
               <span className={styles.metricLabel}>引擎规模</span>
               <div className={styles.cuInfo}>
@@ -271,7 +231,7 @@ export const EngineCard: React.FC<EngineCardProps> = ({ engine, isActive = false
                       className={styles.progressFill}
                     />
                   </svg>
-                  <AnimatedNumber value={memoryUsage} />
+                  <AnimatedNumber value={memoryUsage} showPercent={true} />
                 </div>
               </div>
             </div>

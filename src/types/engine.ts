@@ -83,6 +83,9 @@ export interface EngineConfig {
   /** Flink 引擎子类型（仅Flink引擎需要） */
   flinkSubType?: FlinkEngineSubType;
 
+  /** 资源池ID（当引擎属于某个资源池时） */
+  resourcePoolId?: string;
+
   /** 2.2 引擎显示名 (Max 48个字符) */
   displayName: string;
 
@@ -190,6 +193,84 @@ export interface MetricConfig {
 }
 
 /**
+ * 资源池标签配置
+ */
+export interface ResourcePoolTag {
+  /** 标签文本 */
+  text: string;
+  /** 标签类型 */
+  type?: 'default' | 'invalid';
+}
+
+/**
+ * 资源池状态配置
+ */
+export interface ResourcePoolStatus {
+  /** 状态文本 */
+  text: string;
+  /** 状态类型 */
+  type: 'enabled' | 'disabled';
+}
+
+/**
+ * 资源池进度指标配置
+ */
+export interface ResourcePoolProgressMetric {
+  /** 指标ID */
+  id: string;
+  /** 指标名称 */
+  name: string;
+  /** 当前值 */
+  current: number;
+  /** 总值 */
+  total: number;
+  /** 是否显示info图标 */
+  hasInfo?: boolean;
+  /** info提示内容 */
+  infoTooltip?: string;
+  /** 是否为任务数类型（显示分段进度条） */
+  isTaskType?: boolean;
+}
+
+/**
+ * 资源池配置接口
+ */
+export interface ResourcePoolConfig {
+  /** 资源池ID（唯一标识） */
+  id: string;
+
+  /** 资源池显示名称 */
+  displayName: string;
+
+  /** 资源池代码名称 */
+  poolCode: string;
+
+  /** 创建方式 */
+  creationType: CreationType;
+
+  /** 资源池状态 */
+  status: ResourcePoolStatus;
+
+  /** 标签列表 */
+  tags: ResourcePoolTag[];
+
+  /** 创建者 */
+  creator: string;
+
+  /** 资源池类型（realtime/batch） */
+  poolType: 'realtime' | 'batch';
+
+  /** 运行CU数进度 */
+  runningCUMetric: ResourcePoolProgressMetric;
+
+  /** 队列进度 */
+  queueMetric: ResourcePoolProgressMetric;
+
+  /** 任务数指标 */
+  taskMetric: ResourcePoolProgressMetric;
+}
+
+/**
  * 配置文件结构
  */
 export interface EnginesConfigFile {
@@ -197,4 +278,14 @@ export interface EnginesConfigFile {
   version: string;
   /** 引擎列表 */
   engines: EngineConfig[];
+}
+
+/**
+ * 资源池配置文件结构
+ */
+export interface ResourcePoolsConfigFile {
+  /** 配置文件版本 */
+  version: string;
+  /** 资源池列表 */
+  pools: ResourcePoolConfig[];
 }
