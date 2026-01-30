@@ -22,8 +22,8 @@ export function loadEngineConfigs(): EngineConfig[] {
     flinkSessionEnginesConfig,
   ];
 
-  // 合并所有引擎配置
-  return configs.flatMap(config => config.engines);
+  // 合并所有引擎配置，添加类型断言
+  return configs.flatMap((config) => config.engines as EngineConfig[]);
 }
 
 /**

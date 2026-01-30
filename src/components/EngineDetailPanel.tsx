@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './EngineDetailPanel.module.css';
 import { Icon } from './Icon';
 import { SlotLogo } from './SlotLogo';
-import { Tag } from './Tag';
 import { EngineConfig, ChannelConfig, MetricConfig } from '../types/engine';
 
 interface EngineDetailPanelProps {
@@ -246,8 +245,8 @@ const MetricsTab: React.FC<MetricsTabProps> = ({ engine, onCountdownChange, refr
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [countdown, setCountdown] = useState(5);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const countdownRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<number | null>(null);
+  const countdownRef = useRef<number | null>(null);
 
   // 生成随机值
   const generateRandomValue = (metric: MetricConfig): number => {

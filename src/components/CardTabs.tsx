@@ -27,7 +27,7 @@ export const CardTabs: React.FC<CardTabsProps> = ({ tabs, activeTab, onTabChange
   return (
     <div className={styles.container}>
       <div className={styles.tabsContainer}>
-        {tabs.map((tab, index) => {
+        {tabs.map((tab) => {
           const isActive = tab.id === activeTab;
 
           return (
