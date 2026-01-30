@@ -118,6 +118,17 @@ function App() {
     return [];
   }, [activeTab, flinkSubType]);
 
+  // 计算每个资源池的引擎数量
+  const poolEngineCount = useMemo(() => {
+    const counts: Record<string, number> = {};
+    currentPools.forEach(pool => {
+      counts[pool.id] = enginesData.filter(
+        engine => engine.resourcePoolId === pool.id
+      ).length;
+    });
+    return counts;
+  }, [enginesData, currentPools]);
+
   // 获取当前选中的引擎
   const selectedEngine = useMemo(() => {
     return enginesData.find(e => e.id === selectedEngineId);
@@ -153,7 +164,11 @@ function App() {
               <div className={`${styles.engineCards} ${isResourcePoolType ? styles.resourcePool : ''}`}>
                 {/* 资源池类型：显示资源池标题（独立于引擎列表容器） */}
                 {isResourcePoolType && currentPools.map((pool) => (
-                  <ResourcePoolHeader key={pool.id} pool={pool} />
+                  <ResourcePoolHeader
+                    key={pool.id}
+                    pool={pool}
+                    engineCount={poolEngineCount[pool.id]}
+                  />
                 ))}
                 {/* 资源池类型：引擎列表和抽屉的容器 */}
                 {isResourcePoolType ? (

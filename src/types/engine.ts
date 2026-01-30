@@ -153,7 +153,7 @@ export interface EngineConfig {
   workerCountLabel?: string;
 
   /** 2.13 执行任务数 */
-  taskCount: number;
+  taskCount?: number;
 
   /** Coordinator规格 */
   coordinatorSpec: string;

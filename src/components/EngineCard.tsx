@@ -34,7 +34,7 @@ export const EngineCard: React.FC<EngineCardProps> = ({ engine, isActive = false
   const [cpuUsage, setCpuUsage] = useState(engine.cpuUsage);
   const [memoryUsage, setMemoryUsage] = useState(engine.memoryUsage);
   const [workerCount, setWorkerCount] = useState(engine.workerCount);
-  const [taskCount, setTaskCount] = useState(engine.taskCount);
+  const [taskCount, setTaskCount] = useState(engine.taskCount ?? 0);
 
   // CPU使用率 - 独立刷新
   useEffect(() => {
@@ -88,6 +88,8 @@ export const EngineCard: React.FC<EngineCardProps> = ({ engine, isActive = false
 
   // 执行任务数 - 独立刷新
   useEffect(() => {
+    if (engine.taskCount === undefined) return;
+
     const refreshTask = () => {
       const taskDelta = Math.floor(Math.random() * 11) - 5;
       const newTask = Math.max(0, engine.taskCount + taskDelta);
@@ -242,12 +244,14 @@ export const EngineCard: React.FC<EngineCardProps> = ({ engine, isActive = false
                   <AnimatedNumber value={workerCount} showPercent={false} />
                 </span>
               </div>
-              <div className={styles.taskMetric}>
-                <span className={styles.taskLabel}>执行任务数</span>
-                <span className={styles.taskValue}>
-                  <AnimatedNumber value={taskCount} showPercent={false} />
-                </span>
-              </div>
+              {engine.taskCount !== undefined && (
+                <div className={styles.taskMetric}>
+                  <span className={styles.taskLabel}>执行任务数</span>
+                  <span className={styles.taskValue}>
+                    <AnimatedNumber value={taskCount} showPercent={false} />
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -270,5 +274,5 @@ export interface EngineInfo {
   cpuUsage: number;
   memoryUsage: number;
   workerCount: number;
-  taskCount: number;
+  taskCount?: number;
 }

@@ -95,7 +95,11 @@ const ConfigTab: React.FC<{ engine: EngineConfig }> = ({ engine }) => {
     'cloud-native': '云原生集群'
   };
 
-  const isFlinkSession = engine.engineType === 'flink' && engine.flinkSubType === 'session';
+  // 判断是否为 Flink Session 或资源池类型（它们有相同的配置字段）
+  const isFlinkSession = engine.engineType === 'flink' && (
+    engine.flinkSubType === 'session' ||
+    engine.flinkSubType?.startsWith('resource-pool')
+  );
 
   return (
     <div className={styles.configContainer}>
@@ -194,7 +198,7 @@ const ConfigTab: React.FC<{ engine: EngineConfig }> = ({ engine }) => {
 
 // 指标卡片组件
 const MetricCard: React.FC<{ metric: MetricConfig }> = ({ metric }) => {
-  const isLongUnit = metric.unit && metric.unit.length > 5; // Bytes/s 等长单位
+  const isLongUnit = metric.unit && metric.unit.length > 10; // 只有更长的单位才分行显示
 
   return (
     <div className={styles.metricCard} data-highlight={metric.highlight ? 'true' : undefined}>

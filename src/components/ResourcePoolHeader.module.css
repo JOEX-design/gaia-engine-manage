@@ -387,24 +387,24 @@
   transition: width 0.3s ease;
 }
 
-/* 任务数进度条 - 对应 (77:3758) bg-[#1e76f0] h-[6px] rounded-[8px] w-[140px] */
+/* 任务数进度条 - 色块均分宽度 */
 .taskProgressBar {
-  background-color: #1e76f0;
   display: flex;
   height: 6px;
-  align-items: center;
-  justify-content: space-between;
+  align-items: stretch;
+  gap: 2px;
   border-radius: 8px;
   flex-shrink: 0;
   width: 140px;
+  overflow: hidden;
 }
 
-/* 任务进度分段 - 对应 (77:3759-77:364) h-[6px] w-[2px] margin */
+/* 任务进度分段 - 宽度均分 */
 .taskSegment,
 .taskSegmentInactive {
-  height: 6px;
-  flex-shrink: 0;
-  width: 2px;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
 }
 
 .taskSegment {

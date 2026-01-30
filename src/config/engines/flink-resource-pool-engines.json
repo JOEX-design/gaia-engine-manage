@@ -8,7 +8,7 @@
       "resourcePoolId": "pool-flink-realtime-dw-task-product",
       "displayName": "实时任务1",
       "engineName": "rt-task-name-1",
-      "creationType": "preset",
+      "creationType": "custom",
       "version": "Flink 1.19",
       "businessMode": "流式计算",
       "clusterType": "cloud-native",
@@ -21,8 +21,10 @@
       },
       "workerCount": 5,
       "workerCountLabel": "TM数",
-      "taskCount": 5,
-      "creator": "System",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
       "metrics": [
         {
           "id": "metric-cpu-usage",
@@ -37,6 +39,19 @@
           "value": 60,
           "unit": "%",
           "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
         },
         {
           "id": "metric-tm-count",
@@ -53,7 +68,7 @@
       "resourcePoolId": "pool-flink-realtime-dw-task-product",
       "displayName": "实时任务2",
       "engineName": "rt-task-name-2",
-      "creationType": "preset",
+      "creationType": "custom",
       "version": "Flink 1.19",
       "businessMode": "流式计算",
       "clusterType": "cloud-native",
@@ -66,8 +81,10 @@
       },
       "workerCount": 5,
       "workerCountLabel": "TM数",
-      "taskCount": 5,
-      "creator": "System",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
       "metrics": [
         {
           "id": "metric-cpu-usage",
@@ -82,6 +99,19 @@
           "value": 60,
           "unit": "%",
           "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
         },
         {
           "id": "metric-tm-count",
@@ -98,7 +128,7 @@
       "resourcePoolId": "pool-flink-realtime-dw-task-product",
       "displayName": "实时任务3",
       "engineName": "rt-task-name-3",
-      "creationType": "preset",
+      "creationType": "custom",
       "version": "Flink 1.19",
       "businessMode": "流式计算",
       "clusterType": "cloud-native",
@@ -111,8 +141,10 @@
       },
       "workerCount": 5,
       "workerCountLabel": "TM数",
-      "taskCount": 5,
-      "creator": "System",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
       "metrics": [
         {
           "id": "metric-cpu-usage",
@@ -127,6 +159,19 @@
           "value": 60,
           "unit": "%",
           "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
         },
         {
           "id": "metric-tm-count",
@@ -143,7 +188,7 @@
       "resourcePoolId": "pool-flink-realtime-dw-task-product",
       "displayName": "实时任务4",
       "engineName": "rt-task-name-4",
-      "creationType": "preset",
+      "creationType": "custom",
       "version": "Flink 1.19",
       "businessMode": "流式计算",
       "clusterType": "cloud-native",
@@ -156,8 +201,10 @@
       },
       "workerCount": 5,
       "workerCountLabel": "TM数",
-      "taskCount": 5,
-      "creator": "System",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
       "metrics": [
         {
           "id": "metric-cpu-usage",
@@ -172,6 +219,19 @@
           "value": 60,
           "unit": "%",
           "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
         },
         {
           "id": "metric-tm-count",
@@ -188,7 +248,7 @@
       "resourcePoolId": "pool-flink-realtime-dw-task-product",
       "displayName": "实时任务5",
       "engineName": "rt-task-name-5",
-      "creationType": "preset",
+      "creationType": "custom",
       "version": "Flink 1.19",
       "businessMode": "流式计算",
       "clusterType": "cloud-native",
@@ -201,8 +261,10 @@
       },
       "workerCount": 5,
       "workerCountLabel": "TM数",
-      "taskCount": 5,
-      "creator": "System",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
       "metrics": [
         {
           "id": "metric-cpu-usage",
@@ -217,6 +279,199 @@
           "value": 60,
           "unit": "%",
           "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-tm-count",
+          "name": "Task Manager 数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        }
+      ]
+    },
+    {
+      "id": "engine-flink-resource-pool-batch-sync-task-1",
+      "engineType": "flink",
+      "flinkSubType": "resource-pool-batch",
+      "resourcePoolId": "pool-flink-batch-dw-sync-product",
+      "displayName": "集成任务1",
+      "engineName": "sync-task-name-1",
+      "creationType": "custom",
+      "version": "Flink 1.19",
+      "businessMode": "批量集成",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "engineScale": {
+        "spec": "16CU",
+        "count": "3～10",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "TM数",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-tm-count",
+          "name": "Task Manager 数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        }
+      ]
+    },
+    {
+      "id": "engine-flink-resource-pool-batch-sync-task-2",
+      "engineType": "flink",
+      "flinkSubType": "resource-pool-batch",
+      "resourcePoolId": "pool-flink-batch-dw-sync-product",
+      "displayName": "集成任务2",
+      "engineName": "sync-task-name-2",
+      "creationType": "custom",
+      "version": "Flink 1.19",
+      "businessMode": "批量集成",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "engineScale": {
+        "spec": "16CU",
+        "count": "3～10",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "TM数",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-tm-count",
+          "name": "Task Manager 数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        }
+      ]
+    },
+    {
+      "id": "engine-flink-resource-pool-batch-sync-task-3",
+      "engineType": "flink",
+      "flinkSubType": "resource-pool-batch",
+      "resourcePoolId": "pool-flink-batch-dw-sync-product",
+      "displayName": "集成任务3",
+      "engineName": "sync-task-name-3",
+      "creationType": "custom",
+      "version": "Flink 1.19",
+      "businessMode": "批量集成",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "engineScale": {
+        "spec": "16CU",
+        "count": "3～10",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "TM数",
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "creator": "数据开发平台",
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": 5,
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
         },
         {
           "id": "metric-tm-count",

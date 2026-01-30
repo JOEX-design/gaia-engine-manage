@@ -91,10 +91,10 @@
 }
 
 .presetTag {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
-  height: 18px;
+  height: 20px;
   padding: 0 4px;
   border-radius: 2px;
   background-color: var(--color-tag-pre-bg);
@@ -104,16 +104,17 @@
 .presetTag svg {
   width: 14px;
   height: 14px;
-  color: var(--color-text-4);
-  vertical-align: middle;
+  color: #202241;
+  flex-shrink: 0;
+  display: block;
 }
 
 .presetTag span {
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-12);
-  line-height: var(--line-height-20);
-  color: var(--color-text-4);
+  line-height: 1;
+  color: #202241;
 }
 
 .actionButtons {

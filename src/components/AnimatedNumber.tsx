@@ -8,20 +8,19 @@ interface AnimatedNumberProps {
 
 // 数字滚动组件
 export const AnimatedNumber: React.FC<AnimatedNumberProps> = ({ value, showPercent = false }) => {
-  const [displayValue, setDisplayValue] = useState(0);
-  const hasAnimated = useRef(false);
+  const [displayValue, setDisplayValue] = useState(value);
+  const prevValueRef = useRef(value);
 
   useEffect(() => {
-    if (!hasAnimated.current) {
-      // 首次渲染时，延迟一小段时间后滚动到目标值
-      const timer = setTimeout(() => {
-        setDisplayValue(value);
-        hasAnimated.current = true;
-      }, 100);
-      return () => clearTimeout(timer);
-    } else {
-      // 后续更新直接设置值
+    // 首次渲染时更新 ref，不播放动画
+    prevValueRef.current = value;
+  }, []);
+
+  useEffect(() => {
+    // 首次渲染后（value 不等于 ref 中的值）才更新并播放动画
+    if (value !== prevValueRef.current) {
       setDisplayValue(value);
+      prevValueRef.current = value;
     }
   }, [value]);
 

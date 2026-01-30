@@ -6,9 +6,10 @@ import { ResourcePoolConfig } from '../types/engine';
 
 interface ResourcePoolHeaderProps {
   pool: ResourcePoolConfig;
+  engineCount?: number;
 }
 
-export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool }) => {
+export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool, engineCount }) => {
   const [showRunningCuInfo, setShowRunningCuInfo] = useState(false);
   const [showQueueInfo, setShowQueueInfo] = useState(false);
 
@@ -68,6 +69,14 @@ export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool }) 
 
   // 计算队列进度条宽度
   const queueWidth = getProgressWidth(queueValue, pool.queueMetric.total);
+
+  // 使用传入的引擎数量作为任务数，如果没有则使用配置中的值
+  const taskCount = engineCount !== undefined ? engineCount : pool.taskMetric.current;
+
+  // 生成任务数色块（有几个任务就有几个色块，所有色块都是活跃的）
+  const taskSegments = Array.from({ length: taskCount }, () => ({
+    isActive: true,
+  }));
 
   return (
     <div className={styles.headerWrapper}>
@@ -203,15 +212,15 @@ export const ResourcePoolHeader: React.FC<ResourcePoolHeaderProps> = ({ pool }) 
                       <div className={styles.metricLabel}>
                         <span>任务数</span>
                       </div>
-                      <span className={styles.metricValue}>{pool.taskMetric.current}</span>
+                      <span className={styles.metricValue}>{taskCount}</span>
                     </div>
                     <div className={styles.taskProgressBar}>
-                      <div className={styles.taskSegment} />
-                      <div className={styles.taskSegmentInactive} />
-                      <div className={styles.taskSegmentInactive} />
-                      <div className={styles.taskSegmentInactive} />
-                      <div className={styles.taskSegmentInactive} />
-                      <div className={styles.taskSegment} />
+                      {taskSegments.map((segment, index) => (
+                        <div
+                          key={index}
+                          className={segment.isActive ? styles.taskSegment : styles.taskSegmentInactive}
+                        />
+                      ))}
                     </div>
                   </div>
                 </div>
