@@ -1,0 +1,122 @@
+.leftNav {
+  width: 240px;
+  height: 100%;
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  flex-shrink: 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  position: relative;
+}
+
+.menuItem {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: var(--color-white);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.menuItem.active {
+  background-color: var(--color-nav-active);
+}
+
+.menuItemContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-2);
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.iconActive {
+  color: var(--color-primary);
+}
+
+.label {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+}
+
+.labelActive {
+  font-weight: var(--font-weight-medium);
+}
+
+.arrowDown {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.arrowDown svg {
+  width: 100%;
+  height: 100%;
+}
+
+.subMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subMenuItem {
+  width: 100%;
+  padding: 8px 8px 8px 34px;
+  border-radius: 4px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.subLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-4);
+}

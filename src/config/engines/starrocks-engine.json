@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "engines": [
+    {
+      "id": "engine-default-starrocks",
+      "engineType": "starrocks",
+      "displayName": "默认引擎",
+      "engineName": "starrocks-ch-default",
+      "creationType": "preset",
+      "version": "StarRocks 3.5.7",
+      "businessMode": "批量计算",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "maxConcurrency": {
+        "value": 8
+      },
+      "engineScale": {
+        "spec": "16CU",
+        "count": "3～8",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "CN数",
+      "taskCount": 5,
+      "coordinatorSpec": "16CU",
+      "workerSpec": "16CU",
+      "creator": "System",
+      "channels": [
+        {
+          "id": "channel-default-query",
+          "channelName": "默认查询",
+          "channelCode": "ch_default",
+          "isPreset": true,
+          "availableApp": "数据开发平台",
+          "businessMode": "OLAP",
+          "queueTimeout": "30s",
+          "creator": "System",
+          "status": "enabled",
+          "queueProgress": {
+            "current": 20,
+            "total": 300
+          },
+          "concurrencyRate": 80
+        },
+        {
+          "id": "channel-default-fast",
+          "channelName": "默认快速",
+          "channelCode": "ch_fast",
+          "isPreset": true,
+          "availableApp": "数据开发平台",
+          "businessMode": "DDL",
+          "queueTimeout": "30s",
+          "creator": "System",
+          "status": "enabled",
+          "queueProgress": {
+            "current": 20,
+            "total": 300
+          },
+          "concurrencyRate": 30
+        }
+      ],
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-cn-count",
+          "name": "CN数",
+          "value": 5,
+          "highlight": true,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-task-count",
+          "name": "执行任务数",
+          "value": 5,
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        }
+      ]
+    }
+  ]
+}

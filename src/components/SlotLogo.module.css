@@ -1,0 +1,47 @@
+.slotLogo {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slotLogoStarRocks {
+  align-items: flex-start;
+  padding-top: 1px;
+}
+
+.logoImage {
+  max-width: 18px;
+  max-height: 18px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.slot-logo-trino {
+  color: var(--color-primary);
+}
+
+.slot-logo-starrocks {
+  color: #F59E0B;
+}
+
+.slot-logo-flink {
+  color: #E11D48;
+}
+
+.slot-logo-hive {
+  color: #F97316;
+}
+
+.slot-logo svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  vertical-align: middle;
+}

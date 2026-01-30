@@ -1,0 +1,139 @@
+/* 全局样式变量 */
+:root {
+  /* 颜色系统 */
+  --color-primary: #1e76f0;
+  --color-text-1: #333333;
+  --color-text-2: #7e7f80;
+  --color-text-3: #747c94;
+  --color-text-4: #202241;
+  --color-text-5: #212121;
+  --color-text-6: #bdbdbf;
+  --color-white: #ffffff;
+  --color-bg-gray: #f3f3f5;
+  --color-bg-light: #f9f9fb;
+  --color-border: #e3e4e5;
+  --color-border-light: #ebedf3;
+  --color-nav-active: #ebedf3;
+  --color-tag-bg: #ebedf3;
+  --color-tag-pre-bg: rgba(185, 190, 207, 0.3);
+  --color-fill-deep: #212121;
+
+  /* 字体系统 */
+  --font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* 字号 */
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+
+  /* 字重 */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* 行高 */
+  --line-height-20: 20px;
+  --line-height-22: 22px;
+  --line-height-24: 24px;
+
+  /* 圆角 */
+  --radius-2: 2px;
+  --radius-4: 4px;
+  --radius-8: 8px;
+
+  /* 间距 */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+}
+
+/* 全局重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-14);
+  color: var(--color-text-1);
+  line-height: var(--line-height-22);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 通用样式类 */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-4 {
+  gap: var(--spacing-4);
+}
+
+.gap-8 {
+  gap: var(--spacing-8);
+}
+
+.gap-12 {
+  gap: var(--spacing-12);
+}
+
+.gap-16 {
+  gap: var(--spacing-16);
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

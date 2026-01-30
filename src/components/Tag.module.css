@@ -1,0 +1,32 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.tag-default {
+  background-color: var(--color-tag-bg);
+}
+
+.tag-invalid {
+  background-color: var(--color-tag-bg);
+}
+
+.tag-text {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  font-style: normal;
+}
+
+.tag-default .tag-text {
+  color: var(--color-text-4);
+}
+
+.tag-invalid .tag-text {
+  color: var(--color-text-3);
+}

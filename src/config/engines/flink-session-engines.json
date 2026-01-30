@@ -1,0 +1,293 @@
+{
+  "version": "1.0.0",
+  "engines": [
+    {
+      "id": "engine-flink-session-sync-dev",
+      "engineType": "flink",
+      "flinkSubType": "session",
+      "displayName": "快速批量集成-调试引擎",
+      "engineName": "flink-ch-dw-sync-fast-dev",
+      "creationType": "preset",
+      "version": "Flink 1.19",
+      "businessMode": "预热式批量集成",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "maxConcurrency": {
+        "value": 4
+      },
+      "maxCU": 8,
+      "maxRunningCU": 32,
+      "engineScale": {
+        "spec": "4CU",
+        "count": "4～8",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "TM数",
+      "taskCount": 5,
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "minWarmup": "2CU",
+      "creator": "System",
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": "5",
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-task-count",
+          "name": "执行任务数",
+          "value": 5,
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-tm-count",
+          "name": "Task Manager 数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        }
+      ]
+    },
+    {
+      "id": "engine-flink-session-sync-product",
+      "engineType": "flink",
+      "flinkSubType": "session",
+      "displayName": "快速批量集成-执行引擎",
+      "engineName": "flink-ch-dw-sync-fast-product",
+      "creationType": "preset",
+      "version": "Flink 1.19",
+      "businessMode": "预热式批量集成",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "maxConcurrency": {
+        "value": 4
+      },
+      "maxCU": 8,
+      "maxRunningCU": 32,
+      "engineScale": {
+        "spec": "4CU",
+        "count": "4～8",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "TM数",
+      "taskCount": 5,
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "minWarmup": "2CU",
+      "creator": "System",
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": "5",
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-task-count",
+          "name": "执行任务数",
+          "value": 5,
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-tm-count",
+          "name": "Task Manager 数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        }
+      ]
+    },
+    {
+      "id": "engine-flink-session-task-dev",
+      "engineType": "flink",
+      "flinkSubType": "session",
+      "displayName": "数开实时任务-调试引擎",
+      "engineName": "flink-ch-dw-task-dev",
+      "creationType": "preset",
+      "version": "Flink 1.19",
+      "businessMode": "流式计算",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "maxConcurrency": {
+        "value": 4
+      },
+      "maxCU": 8,
+      "maxRunningCU": 32,
+      "engineScale": {
+        "spec": "4CU",
+        "count": "4～8",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "TM数",
+      "taskCount": 5,
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "minWarmup": "2CU",
+      "creator": "System",
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": "5",
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-task-count",
+          "name": "执行任务数",
+          "value": 5,
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-tm-count",
+          "name": "Task Manager 数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        }
+      ]
+    },
+    {
+      "id": "engine-flink-session-hub-task",
+      "engineType": "flink",
+      "flinkSubType": "session",
+      "displayName": "通用入仓引擎",
+      "engineName": "flink-ch-dw-hub-task",
+      "creationType": "preset",
+      "version": "Flink 1.19",
+      "businessMode": "HUB通用入仓",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "maxConcurrency": {
+        "value": 4
+      },
+      "maxCU": 8,
+      "maxRunningCU": 32,
+      "engineScale": {
+        "spec": "4CU",
+        "count": "4～8",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "workerCountLabel": "TM数",
+      "taskCount": 5,
+      "jmSpec": "8CU",
+      "tmSpec": "8CU",
+      "parallelCU": "1CU",
+      "minWarmup": "2CU",
+      "creator": "System",
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [50, 55, 53, 58, 56, 59, 60]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 60,
+          "unit": "%",
+          "chartData": [52, 56, 54, 58, 57, 59, 60]
+        },
+        {
+          "id": "metric-slot-idle",
+          "name": "Slot 空闲数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": "5",
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-task-count",
+          "name": "执行任务数",
+          "value": 5,
+          "chartData": [2, 3, 4, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-tm-count",
+          "name": "Task Manager 数",
+          "value": 5,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        }
+      ]
+    }
+  ]
+}

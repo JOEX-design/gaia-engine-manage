@@ -1,0 +1,175 @@
+.topNav {
+  width: 100%;
+  height: 56px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.brandSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 20px;
+  border-right: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.menuIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.menuIcon svg {
+  color: var(--color-text-2);
+  display: block;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo svg {
+  color: var(--color-primary);
+}
+
+.brandLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
+  color: var(--color-text-5);
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.navItem {
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.navLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
+  color: var(--color-text-1);
+}
+
+.activeLabel {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.toolIcons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tikiLogo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.toolIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.toolIcon svg {
+  color: var(--color-text-3);
+  display: block;
+}
+
+.clusterSelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 4px 12px;
+  border-radius: 4px;
+  background-color: var(--color-white);
+  border-left: 1px solid var(--color-border);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.clusterLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
+  color: var(--color-text-5);
+}
+
+.clusterArrow {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clusterArrow svg {
+  color: var(--color-text-6);
+  display: block;
+}

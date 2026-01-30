@@ -1,0 +1,158 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.tabsContainer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  position: relative;
+  isolation: isolate;
+}
+
+.tabItem {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+  padding-right: 11px;
+  cursor: pointer;
+}
+
+/* 最后一个 tab 的样式 */
+.lastTab {
+  padding-right: 0;
+}
+
+.tabItem:not(:last-child) {
+  margin-right: -11px;
+}
+
+.tabContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 24px;
+  border-radius: 4px 0 0 0;
+  overflow: hidden;
+  background-color: #F9F9FB;
+  position: relative;
+  z-index: 3;
+  margin-right: -11px;
+}
+
+.tabContentActive {
+  background-color: #FFFFFF;
+}
+
+.tabDecor {
+  width: 36px;
+  height: 40px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  margin-right: -11px;
+}
+
+.tabDecorSmall {
+  width: 16px;
+  height: 19px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.tabLogo {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.tabTitle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
+  color: #7E7F80;
+}
+
+.tabTitleActive {
+  font-weight: var(--font-weight-medium);
+  color: #333333;
+}
+
+.filterSelect {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.selectControl {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #E3E4E5;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.selectContent {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.selectIcon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.selectIcon svg {
+  color: var(--color-text-1);
+  display: block;
+}
+
+.selectLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: #333333;
+}
+
+.selectArrow {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.selectArrow svg {
+  color: #BDBEBF;
+  display: block;
+}

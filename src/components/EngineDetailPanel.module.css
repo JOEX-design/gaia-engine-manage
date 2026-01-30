@@ -1,0 +1,782 @@
+/* 面板容器 - 不使用 fixed，而是 flex 布局 */
+.panelWrapper {
+  flex: 0 0 500px;
+  height: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.panel {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 顶部引擎信息区域 */
+.panelHeader {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 8px 16px 24px;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.engineInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.engineInfoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.engineLogo {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.engineName {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--color-border-light);
+  flex-shrink: 0;
+}
+
+.clusterName {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  max-width: 150px;
+  flex-shrink: 0;
+}
+
+.presetTag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 2px;
+  background-color: var(--color-tag-pre-bg);
+  flex-shrink: 0;
+}
+
+.presetTag svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-4);
+  vertical-align: middle;
+}
+
+.presetTag span {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-4);
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editButton {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  height: 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.editButton:hover {
+  background-color: var(--color-bg-light);
+}
+
+.editButton span {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+}
+
+.iconButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.iconButton:hover {
+  background-color: var(--color-bg-light);
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background-color: var(--color-bg-light);
+}
+
+/* Tab 和搜索区域 */
+.panelTabs {
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  flex-shrink: 0;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tab {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-2);
+}
+
+.tab:hover {
+  background-color: var(--color-bg-light);
+}
+
+.tabActive {
+  background-color: var(--color-secondary-fill);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-1);
+}
+
+.searchBox {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+  width: 180px;
+  min-height: 32px;
+  box-sizing: border-box;
+}
+
+.searchBox span {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-4);
+}
+
+.metricsRefresh {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metricsRefresh span {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-2);
+}
+
+/* 内容区域 */
+.panelContent {
+  flex: 1;
+  background-color: var(--color-white);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+
+/* 空状态 */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  gap: 16px;
+  color: var(--color-text-2);
+}
+
+.emptyState svg {
+  color: var(--color-text-4);
+  opacity: 0.5;
+}
+
+.emptyState p {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-2);
+}
+
+/* 通道卡片 */
+.channelCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.channelHeader {
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 12px 16px;
+}
+
+.channelInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.channelNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.channelName {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+}
+
+.channelCodeWrapper {
+  border-left: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  flex-shrink: 0;
+}
+
+.channelCode {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-2);
+}
+
+.editIconButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.editIconButton:hover {
+  background-color: var(--color-bg-light);
+}
+
+.channelBody {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.channelInfoList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 0;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.infoLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-2);
+  width: 48px;
+}
+
+.infoValue {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-1);
+}
+
+.channelStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 8px 0 12px 8px;
+  min-width: 130px;
+  gap: 16px;
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.9;
+  height: 22px;
+}
+
+.statusBadge svg {
+  color: var(--color-success-default);
+  display: flex;
+  align-items: center;
+}
+
+.statusBadge span {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-success-default);
+  display: flex;
+  align-items: center;
+}
+
+.progressGroup {
+  border-left: 1px solid var(--color-border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-left: 16px;
+  width: 100%;
+}
+
+.progressItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.progressLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-2);
+}
+
+.progressValue {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-1);
+}
+
+.progressBar {
+  background-color: var(--color-secondary-fill);
+  height: 6px;
+  border-radius: 8px;
+  width: 120px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.progressFill {
+  background-color: var(--color-primary);
+  height: 6px;
+  border-radius: 8px;
+}
+
+/* 全局 CSS 变量补充 */
+:root {
+  --color-secondary-fill: #F2F3F8;
+  --color-border: #E3E4E5;
+  --color-success-default: #129B76;
+  --color-text-4: #BDBEBF;
+  --color-primary-hover: #3583EF;
+}
+
+/* 配置Tab样式 */
+.configContainer {
+  background-color: var(--color-white);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-clip: hidden;
+}
+
+.configGroup {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  align-items: flex-start;
+  overflow-clip: hidden;
+}
+
+.configGroup:first-child {
+  border-top: none;
+}
+
+.configItem {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+}
+
+.configLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-2);
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.configValue {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+}
+
+.configValueGroup {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.configValueGroup .configValue {
+  flex-shrink: 0;
+}
+
+.configTip {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+}
+
+/* 指标Tab样式 */
+.metricsContainer {
+  background-color: var(--color-white);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow-clip: hidden;
+}
+
+.metricsGrid {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.metricsGrid > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.metricCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  padding: 12px;
+  gap: 16px;
+  overflow-clip: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.metricCard:hover {
+  border-color: #3583EF;
+}
+
+.metricCard[data-highlight="true"] {
+  border-color: #3583EF;
+}
+
+.metricInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metricLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-2);
+}
+
+.metricValueWrapper {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.metricValueWrapperColumn {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.metricValue {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 24px;
+  line-height: 36px;
+  color: var(--color-text-1);
+}
+
+.metricUnit {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.metricChart {
+  position: relative;
+  width: 60px;
+  height: 49px;
+  flex-shrink: 0;
+}
+
+.metricTooltip {
+  position: fixed;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 14px 0 rgba(10, 16, 50, 0.02), 0 10px 20px 0 rgba(10, 16, 50, 0.03), 0 14px 24px 0 rgba(10, 16, 50, 0.05);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+.metricTooltipVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.metricTooltipTime {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-2);
+  margin-bottom: 8px;
+}
+
+.metricTooltipContent {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.metricTooltipContent span {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  color: var(--color-text-1);
+}
+
+/* 配置Tab样式 */
+.configContainer {
+  background-color: var(--color-white);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-clip: hidden;
+}
+
+.configGroup {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  align-items: flex-start;
+  overflow-clip: hidden;
+}
+
+.configGroup:first-child {
+  border-top: none;
+}
+
+.configItem {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+}
+
+.configLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-2);
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.configValue {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+}
+
+.configValueGroup {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.configValueGroup .configValue {
+  flex-shrink: 0;
+}
+
+.configTip {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
+  color: var(--color-text-1);
+}

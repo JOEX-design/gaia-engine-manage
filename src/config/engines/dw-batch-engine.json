@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "engines": [
+    {
+      "id": "engine-dw-batch-trino",
+      "engineType": "trino",
+      "displayName": "数开批计算",
+      "engineName": "ch-dw",
+      "creationType": "preset",
+      "version": "Trino 435",
+      "businessMode": "批量计算",
+      "clusterType": "cloud-native",
+      "cpuUsage": 60,
+      "memoryUsage": 60,
+      "maxConcurrency": {
+        "value": 8,
+        "tooltip": "资源组：ta_resource_group"
+      },
+      "engineScale": {
+        "spec": "4CU",
+        "count": "4",
+        "type": "计算型"
+      },
+      "workerCount": 5,
+      "taskCount": 5,
+      "coordinatorSpec": "8CU",
+      "workerSpec": "8CU",
+      "creator": "System",
+      "channels": [
+        {
+          "id": "channel-default-query",
+          "channelName": "默认查询",
+          "channelCode": "ch_default",
+          "isPreset": true,
+          "availableApp": "数据开发平台",
+          "businessMode": "OLAP",
+          "queueTimeout": "30s",
+          "creator": "System",
+          "status": "enabled",
+          "queueProgress": {
+            "current": 10,
+            "total": 100
+          },
+          "concurrencyRate": 80
+        },
+        {
+          "id": "channel-default-fast",
+          "channelName": "默认快速",
+          "channelCode": "ch_fast",
+          "isPreset": true,
+          "availableApp": "数据开发平台",
+          "businessMode": "DDL",
+          "queueTimeout": "30s",
+          "creator": "System",
+          "status": "enabled",
+          "queueProgress": {
+            "current": 20,
+            "total": 300
+          },
+          "concurrencyRate": 20
+        }
+      ],
+      "metrics": [
+        {
+          "id": "metric-cpu-usage",
+          "name": "CPU 平均使用率",
+          "value": 55,
+          "unit": "%",
+          "chartData": [40, 48, 45, 52, 50, 54, 55]
+        },
+        {
+          "id": "metric-memory-usage",
+          "name": "内存 平均使用率",
+          "value": 58,
+          "unit": "%",
+          "chartData": [45, 50, 52, 55, 54, 57, 58]
+        },
+        {
+          "id": "metric-worker-count",
+          "name": "Worker数",
+          "value": 5,
+          "highlight": true,
+          "chartData": [3, 4, 4, 5, 5, 5, 5]
+        },
+        {
+          "id": "metric-scan",
+          "name": "扫描",
+          "value": "3",
+          "unit": "Bytes/s",
+          "chartData": [2, 3, 4, 3, 3, 4, 3]
+        },
+        {
+          "id": "metric-task-count",
+          "name": "执行任务数",
+          "value": 5,
+          "chartData": [3, 4, 5, 5, 4, 5, 5]
+        },
+        {
+          "id": "metric-waiting-count",
+          "name": "等待任务数",
+          "value": 3,
+          "chartData": [2, 3, 4, 3, 2, 3, 3]
+        }
+      ]
+
+    }
+  ]
+}
